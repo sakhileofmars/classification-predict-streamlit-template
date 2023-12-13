@@ -131,7 +131,7 @@ if selected2 == 'Predict':
 		# Creating sidebar with selection box -
 		# you can create multiple pages this way
 		options = [
-			"Prediction with Logistic Regression", "Prediction with Random Forest",
+			"Prediction with Logistic Regression",
 			"Prediction with Decision Tree", "Prediction with SVC",
 			"Prediction with Tuned LR", "Prediction with Tuned RFC",
 			"Information"
@@ -178,24 +178,6 @@ if selected2 == 'Predict':
 				# Load your .pkl file with the model of your choice + make predictions
 				# Try loading in multiple models to give the user a choice
 				predictor = joblib.load(open(os.path.join("resources/LogReg_model.pkl"),"rb"))
-				prediction = predictor.predict(vect_text)
-
-				# When model has successfully run, will print prediction
-				# You can use a dictionary or similar structure to make this output
-				# more human interpretable.
-				st.success("Text Categorized as: {}".format(prediction))
-
-		# Building out the predication page
-		if selection == "Prediction with Random Forest":
-			# Creating a text box for user input
-			tweet_text = st.text_area("Enter Text","Type Here")
-
-			if st.button("Classify"):
-				# Transforming user input with vectorizer
-				vect_text = tweet_cv.transform([tweet_text]).toarray()
-				# Load your .pkl file with the model of your choice + make predictions
-				# Try loading in multiple models to give the user a choice
-				predictor = joblib.load(open(os.path.join("resources/RandomForestClassifier_model.pkl"),"rb"))
 				prediction = predictor.predict(vect_text)
 
 				# When model has successfully run, will print prediction
